@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """This module has a script that using a REST API, for a given
     employee ID, returns information about his/her TODO list progress."""
 from sys import argv
@@ -7,20 +7,16 @@ import requests
 
 
 if __name__ == "__main__":
-    name_source = requests.get(f"https://jsonplaceholder.typicode.com/users")
+    name_source = requests.get(f"https://jsonplaceholder.typicode.com/users/{argv[1]}")
     employees = json.loads(name_source.text)
-    task_source = requests.get(f"https://jsonplaceholder.typicode.com/todos")
+    task_source = requests.get("https://jsonplaceholder.typicode.com/todos")
     todos = json.loads(task_source.text)
 
     total_tasks = 0
     tasks_comp = 0
     user_id = int(argv[1])
-    user_name = ""
+    user_name = employees.get('name')
     task_list = []
-
-    for user in employees:
-        if user_id == user.get('id'):
-            user_name = user.get('name')
 
     for tasks in todos:
         if tasks.get('userId') == user_id:
