@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """This module has a script that using a REST API, for a given
     employee ID, returns information about his/her TODO list progress."""
+from sys import argv
 import json
 import requests
-from sys import argv
+
 
 if __name__ == "__main__":
     name_source = requests.get(f"https://jsonplaceholder.typicode.com/users")
@@ -18,16 +19,17 @@ if __name__ == "__main__":
     task_list = []
 
     for user in employees:
-        if user_id == user['id']:
-            user_name = user['name']
+        if user_id ==  user.get('id'):
+            user_name = user.get('name')
 
     for tasks in todos:
-        if int(tasks['userId']) == user_id:
+        if tasks.get('userId') == user_id:
             total_tasks += 1
-            if tasks["completed"] is True:
+            if tasks.get("completed") is True:
                 tasks_comp += 1
-                task_list.append(tasks["title"])
+                task_list.append(tasks.get("title"))
 
-    print(f"Employee {user_name} is done with tasks ({tasks_comp}/{total_tasks}):")
+    print(
+        f"Employee {user_name} is done with tasks ({tasks_comp}/{total_tasks}):")
     for task in task_list:
         print(f"\t {task}")
