@@ -29,7 +29,7 @@ if __name__ == "__main__":
                 tasks_comp += 1
                 task_list.append(tasks.get("title"))
 
-    print(f"Employee {user_name} is done with tasks" +
+    print(f"Employee {user_name} is done with tasks " +
           f"({tasks_comp}/{total_tasks}):")
     for task in task_list:
         print(f"\t {task}")
