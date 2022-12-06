@@ -1,4 +1,4 @@
-#!/usr/bin/tylepython3
+#!/usr/bin/python3
 """This module has a script that using a REST API, for a given
     employee ID, returns information about his/her TODO list progress."""
 import json
