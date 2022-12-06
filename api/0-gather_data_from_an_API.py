@@ -19,7 +19,7 @@ if __name__ == "__main__":
     task_list = []
 
     for user in employees:
-        if user_id ==  user.get('id'):
+        if user_id == user.get('id'):
             user_name = user.get('name')
 
     for tasks in todos:
@@ -29,7 +29,7 @@ if __name__ == "__main__":
                 tasks_comp += 1
                 task_list.append(tasks.get("title"))
 
-    print(
-        f"Employee {user_name} is done with tasks ({tasks_comp}/{total_tasks}):")
+    print(f"Employee {user_name} is done with tasks" +
+          f"({tasks_comp}/{total_tasks}):")
     for task in task_list:
         print(f"\t {task}")
