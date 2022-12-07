@@ -2,7 +2,7 @@
 """
 Script uses employee ID, returns information about todo list progress.
 """
-import requests
+from requests import get
 from sys import argv
 
 
@@ -10,10 +10,10 @@ def get_todo_list():
     """
     This function retrives to do lists by employee
     """
-    name_source = requests.get(f"https://jsonplaceholder.typicode.com/users" +
-                            f"/{argv[1]}")
+    name_source = get(f"https://jsonplaceholder.typicode.com/users" +
+                      f"/{argv[1]}")
     employees = name_source.json()
-    task_source = requests.get("https://jsonplaceholder.typicode.com/todos")
+    task_source = get("https://jsonplaceholder.typicode.com/todos")
     todos = task_source.json()
 
     total_tasks = 0
@@ -30,9 +30,10 @@ def get_todo_list():
                 task_list.append(tasks.get("title"))
 
     print(f"Employee {user_name} is done with tasks " +
-        f"({tasks_comp}/{total_tasks}):")
+          f"({tasks_comp}/{total_tasks}):")
     for task in task_list:
         print(f"\t {task}")
+
 
 if __name__ == "__main__":
     get_todo_list()
