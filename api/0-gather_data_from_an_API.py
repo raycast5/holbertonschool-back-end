@@ -1,15 +1,20 @@
 #!/usr/bin/python3
-"""Script uses employee ID, returns information about todo list progress."""
+"""
+Script uses employee ID, returns information about todo list progress.
+"""
 
 from sys import argv
 import json
 import requests
 
 
-if __name__ == "__main__":
-    """This function retrives to do lists by employee"""
+
+def get_todo_list():
+    """
+    This function retrives to do lists by employee
+    """
     name_source = requests.get(f"https://jsonplaceholder.typicode.com/users" +
-                               f"/{argv[1]}")
+                            f"/{argv[1]}")
     employees = name_source.json()
     task_source = requests.get("https://jsonplaceholder.typicode.com/todos")
     todos = task_source.json()
@@ -28,6 +33,9 @@ if __name__ == "__main__":
                 task_list.append(tasks.get("title"))
 
     print(f"Employee {user_name} is done with tasks " +
-          f"({tasks_comp}/{total_tasks}):")
+        f"({tasks_comp}/{total_tasks}):")
     for task in task_list:
         print(f"\t {task}")
+
+if __name__ == "__main__":
+    get_todo_list()
