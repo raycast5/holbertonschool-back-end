@@ -1,8 +1,6 @@
 #!/usr/bin/python3
-"""This module has a script that using a REST API, for a given
-    employee ID, returns information about his/her todo list progress.
-    """
-    
+"""Script uses employee ID, returns information about todo list progress."""
+
 from sys import argv
 import json
 import requests
@@ -10,7 +8,8 @@ import requests
 
 if __name__ == "__main__":
     """This function retrives to do lists by employee"""
-    name_source = requests.get(f"https://jsonplaceholder.typicode.com/users/{argv[1]}")
+    name_source = requests.get(f"https://jsonplaceholder.typicode.com/users" +
+                               f"/{argv[1]}")
     employees = name_source.json()
     task_source = requests.get("https://jsonplaceholder.typicode.com/todos")
     todos = task_source.json()
@@ -32,6 +31,3 @@ if __name__ == "__main__":
           f"({tasks_comp}/{total_tasks}):")
     for task in task_list:
         print(f"\t {task}")
-
-
-
