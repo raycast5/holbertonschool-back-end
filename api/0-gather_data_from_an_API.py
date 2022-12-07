@@ -2,11 +2,8 @@
 """
 Script uses employee ID, returns information about todo list progress.
 """
-
-from sys import argv
-import json
 import requests
-
+from sys import argv
 
 
 def get_todo_list():
