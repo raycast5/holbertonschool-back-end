@@ -11,7 +11,7 @@ def get_todo_list():
     """
     Returns information about employees
     """ 
-    name_source = get(f"https://jsonplaceholder.typicode.com/users" +
+    name_source = get(f"https://jsonplaceholder.typicode.com/users" + #Query to find employee name
                       f"/{argv[1]}")
     employees = name_source.json()
     task_source = get("https://jsonplaceholder.typicode.com/todos")
