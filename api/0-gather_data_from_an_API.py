@@ -38,10 +38,11 @@ def information_employee():
                             number_of_done_task += 1
                             task_title.append(tod['title'])
 
-        print(f"Employee {employee_name} is done with tasks" +
-              "({number_of_done_task}/{total_number_of_task}):")
+        print('Employee {} is done with tasks({}/{}):'
+              .format(employee_name, number_of_done_task,
+                      total_number_of_task))
         for title in task_title:
-            print(f"\t {title}")
+            print('\t {}'.format(title))
 
 
 if __name__ == "__main__":
